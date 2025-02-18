@@ -15,15 +15,15 @@ import java.util.Date;
 
 @Component
 public class jwtUtil {
-    private static final String SECRET_KEY = "chiavesegreta123chiavesegreta123chiavesegreta123chiavesegreta123";
-    private static final Long EXPIRATION_TIME = 86400000L;
+
+
+    private static final String SECRET_KEY = " chiavesegreta123chiavesegreta123chiavesegreta123chiavesegreta123";   // superkey
+    private static final Long EXPIRATION_TIME = 86400000L;    // tempo di durata
+
     private final Key key = Keys.hmacShaKeyFor(SECRET_KEY.getBytes());
 
-    public String generateToken (String username){
-        return Jwts.builder().setSubject(username).setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME)).signWith(key, SignatureAlgorithm.ES256).compact();
+
+    public String generateToken(String username) {
+        return Jwts.builder().setSubject(username).setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME)).signWith(key, SignatureAlgorithm.HS256).compact();
     }
-
-   /* public String extractUsername (String token){
-
-    }*/
 }
